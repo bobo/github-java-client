@@ -323,8 +323,8 @@ public class GitHubClient {
    * @param repo repository name
    * @return repository API client
    */
-  public RepositoryClient createRepositoryClient(final String owner, final String repo) {
-    return RepositoryClient.create(this, owner, repo);
+  public DefaultRepositoryClient createRepositoryClient(final String owner, final String repo) {
+    return DefaultRepositoryClient.create(this, owner, repo);
   }
 
   /**

@@ -119,7 +119,7 @@ public class GitHubClientTest {
         .build();
 
     when(client.newCall(any())).thenReturn(call);
-    RepositoryClient repoApi = github.createRepositoryClient("testorg", "testrepo");
+    DefaultRepositoryClient repoApi = github.createRepositoryClient("testorg", "testrepo");
 
     CompletableFuture<Optional<CommitItem>> future = repoApi.merge("basebranch", "headbranch");
     capture.getValue().onResponse(call, response);

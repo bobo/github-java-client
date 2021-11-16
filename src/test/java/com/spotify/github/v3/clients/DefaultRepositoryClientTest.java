@@ -28,7 +28,7 @@ import static com.spotify.github.v3.clients.GitHubClient.LIST_BRANCHES;
 import static com.spotify.github.v3.clients.GitHubClient.LIST_FOLDERCONTENT_TYPE_REFERENCE;
 import static com.spotify.github.v3.clients.GitHubClient.LIST_REPOSITORY;
 import static com.spotify.github.v3.clients.MockHelper.createMockResponse;
-import static com.spotify.github.v3.clients.RepositoryClient.STATUS_URI_TEMPLATE;
+import static com.spotify.github.v3.clients.DefaultRepositoryClient.STATUS_URI_TEMPLATE;
 import static java.lang.String.format;
 import static java.nio.charset.Charset.defaultCharset;
 import static java.util.concurrent.CompletableFuture.completedFuture;
@@ -77,10 +77,10 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ Headers.class, ResponseBody.class, Response.class})
-public class RepositoryClientTest {
+public class DefaultRepositoryClientTest {
 
   private GitHubClient github;
-  private RepositoryClient repoClient;
+  private DefaultRepositoryClient repoClient;
   private Json json;
 
   private static String getFixture(String resource) throws IOException {
@@ -90,7 +90,7 @@ public class RepositoryClientTest {
   @Before
   public void setUp() {
     github = mock(GitHubClient.class);
-    repoClient = new RepositoryClient(github, "someowner", "somerepo");
+    repoClient = new DefaultRepositoryClient(github, "someowner", "somerepo");
     json = Json.create();
     when(github.json()).thenReturn(json);
   }
